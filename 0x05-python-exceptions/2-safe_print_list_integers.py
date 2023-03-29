@@ -1,10 +1,21 @@
 #!/usr/bin/python3
-def safe_print_division(a, b):
-    try:
-        result = a / b
-        print("Inside result: {:.1f}".format(result))
-    except:
-        result = None
-        print("Inside result: {}".format(result))
-    finally:
-        return result
+
+def safe_print_list_integers(my_list=[], x=0):
+    """Print the first x elements of a list that are integers.
+
+    Args:
+        my_list (list): The list to print elements from.
+        x (int): The number of elements of my_list to print.
+
+    Returns:
+        The number of elements printed.
+    """
+    ret = 0
+    for i in range(0, x):
+        try:
+            print("{:d}".format(my_list[i]), end="")
+            ret += 1
+        except (ValueError, TypeError):
+            continue
+    print("")
+    return (ret)
